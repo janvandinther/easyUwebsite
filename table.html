@@ -1,0 +1,47 @@
+{% extends "navbar-layout.html" %}
+
+{% block title  %}
+Table
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+
+{% block table %}
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/tablestyle.css">
+    </head>
+
+    <div class="container">
+        <div class="starter-template">
+            <h1>Overview of study rooms</h1>
+            <p class="lead">In this table you can find the studyrooms, their opening hours and the available spots in the particular room.<br> All you get is this text and a mostly barebones HTML document.</p>
+        </div>
+    </div>
+
+    <div class="containera">
+        <table>
+            <thead>
+                <th>Studyroom</th>
+                <th>Opening hours</th>
+                <th>Available spots</th>
+            </thead>
+            <tr>
+                <td>Aula A</td>
+                <td>8.30 - 20.00</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Aula B</td>
+                <td>8.30 - 20.00</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td> Aula C </td>
+                <td> 8.30 - 20.00</td>
+                <td> 16</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+{% endblock %}
