@@ -1,0 +1,58 @@
+.navbar{
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: #24305E;
+    font-size:1.2vw;
+    border:0;
+}
+
+.navbar .container .navbar-brand{
+    color: #F76C6c;
+}
+
+.navbar-inverse .navbar-nav li a{
+    color: #D5D5D5;
+}
+
+.background_photo{
+    position: relative;
+    text-align: center;
+    color:  #F76C6c
+}
+
+
+.background_photo h1{
+    font-size: 10vw;
+}
+
+.centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.highlightme{
+    background-color: #f8e9a1;
+    border-radius: 15px;
+}
+
+
+.btn{
+    width: auto;
+    color: #f8e9a1 ;
+    background: #24305E;
+    transition-duration: 1s;
+    border-radius: 4px;
+    padding: 16px 40px;
+    fontsize: 14px;
+}
+
+.btn:hover{
+    background-color: #F76C6c;
+    color : #f8e9a1 ;
+}
+
+description {
+    font-size: 1.2vw;
+}

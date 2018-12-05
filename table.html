@@ -1,26 +1,22 @@
-{% extends "navbar-layout.html" %}
+{% extends "layout.html" %}
 
 {% block title  %}
 Table
 {% endblock %}
 
-{% block navbar %}
-{{ super() }}
-
-{% block table %}
+{% block content %}
     <head>
-        <link rel="stylesheet" type="text/css" href="/static/tablestyle.css">
+        <link rel="stylesheet" type="text/css" href="/static/table.css" >
     </head>
 
     <div class="container">
-        <div class="starter-template">
-            <h1>Overview of study rooms</h1>
-            <p class="lead">In this table you can find the studyrooms, their opening hours and the available spots in the particular room.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <div>
+            <p class="lead">In this table you can find the study rooms, their opening hours and the available spots in the particular room.</p>
         </div>
     </div>
 
-    <div class="containera">
-        <table>
+    <div class="container">
+        <table class = table>
             <thead>
                 <th>Studyroom</th>
                 <th>Opening hours</th>
@@ -43,5 +39,4 @@ Table
             </tr>
         </table>
     </div>
-{% endblock %}
 {% endblock %}

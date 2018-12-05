@@ -1,0 +1,51 @@
+table {
+    border-spacing: 1px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+table * {
+    position: relative;
+}
+
+table td, table th {
+    padding-left: 8px;
+}
+
+table thead tr {
+    height: 50px;
+    background: #F76C6c ;
+    font-size: 16px;
+}
+
+table tbody tr {
+    height: 48px;
+    border-bottom: 1.5px solid;
+}
+
+table tbody tr:last-child {
+    border: 0;
+}
+
+table td, table th {
+    text-align: center;
+}
+
+.container {
+    background-color: #f8e9a1;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.lead{
+    margin-top: 5%;
+}
