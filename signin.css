@@ -37,3 +37,15 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.btn1 {
+  background-color: #24305E;
+  color: #f8e9a1;
+  border: none;
+  transition-duration: 0.7s;
+}
+
+.btn1:hover {
+  background-color: #F76C6c;
+  color: #f8e9a1;
+}

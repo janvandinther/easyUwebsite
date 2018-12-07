@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
 
                 </button>
-                <a class="navbar-brand" href="/index">EASY-U</a>
+                <a class="navbar-brand" href="/index"><div class="highlightme">&nbsp;&nbsp;EASY-U&nbsp;&nbsp;</div></a>
 
             </div>
 
@@ -32,13 +32,30 @@
                     <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item"><a class="nav-link active" href="/signup">Sign up</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>
-                    <li ><a class="hidden" href="#">Logout</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link active" href="/logout">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/account">Account</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link active" href="/signup">Sign up</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
+
+    <div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
 {% endblock navbar %}
 
     {%block content  %}
