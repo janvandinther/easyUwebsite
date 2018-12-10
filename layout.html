@@ -21,42 +21,40 @@
                     <span class="icon-bar"></span>
 
                 </button>
-                <a class="navbar-brand" href="/index"><div class="highlightme">&nbsp;&nbsp;EASY-U&nbsp;&nbsp;</div></a>
+                <a class="navbar-brand" href="{{url_for('home')}}">EASY-U</a>
 
             </div>
 
             <div class="collapse navbar-collapse" id="MyNavbar">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="nav-item"><a class="nav-link active" href="/studyrooms">Study rooms</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Study together</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{url_for('studyrooms')}}">Study rooms</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{url_for('calendar')}}">Study together</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link active" href="/logout">Logout</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="/account">Account</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{{url_for('account')}}">My account</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{{url_for('logout')}}">Logout</a></li>
                     {% else %}
-                        <li class="nav-item"><a class="nav-link active" href="/signup">Sign up</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{{url_for('signup')}}">Sign up</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{{url_for('login')}}">Login</a></li>
+
                     {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
-
-    <div>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </div>
-
 {% endblock navbar %}
+
+ {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
 
     {%block content  %}
     {% endblock content %}
@@ -78,4 +76,3 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-</html>

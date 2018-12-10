@@ -1,4 +1,7 @@
+
 {% extends "layout.html" %}
+
+
 
 {% block title  %}
 Table
@@ -21,22 +24,20 @@ Table
                 <th>Studyroom</th>
                 <th>Opening hours</th>
                 <th>Available spots</th>
+                <th>Address</th>
             </thead>
-            <tr>
-                <td>Aula A</td>
-                <td>8.30 - 20.00</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>Aula B</td>
-                <td>8.30 - 20.00</td>
-                <td>45</td>
-            </tr>
-            <tr>
-                <td> Aula C </td>
-                <td> 8.30 - 20.00</td>
-                <td> 16</td>
-            </tr>
+            {% if current_user.is_authenticated %}
+
+                {% for line in rooms  %}
+                <tr>
+                    <td>{{ line.study_room }}</td>
+                    <td>{{ line.opening_hours }}</td>
+                    <td>{{ line.available_spots }}</td>
+                    <td>{{ line.address }}</td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+
         </table>
     </div>
 {% endblock %}
