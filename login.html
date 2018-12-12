@@ -10,14 +10,45 @@ Login
     <link rel="stylesheet" type="text/css" href="/static/signin.css">
     </head>
     <div class="container">
-        <form class="form-signin" method="POST">
+        <form class="form-signin" method="POST"  action="">
         <h1>Login </h1>
         <h2 class="form-signin-heading"></h2>
-          {{  form.hidden_tag() }}
-          {{  wtf.form_field(form.username)}}
-          {{  wtf.form_field(form.password)}}
-          {{  wtf.form_field(form.remember)}}
-        <button class="btn1 btn-lg btn-primary btn-block" type="submit" >Login</button>
+            <div>
+                {{  form.hidden_tag() }}
+                {{ form.username.label(class="form-control-lable") }}
+                {% if form.username.errors %}
+                {{ form.username(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form.username(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div>
+
+                {{ form.password.label(class="form-control-lable") }}
+                {% if form.password.errors %}
+                {{ form.password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form.password(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
       </form>
 
     </div> <!-- /container -->
