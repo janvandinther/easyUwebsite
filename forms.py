@@ -1,10 +1,9 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
-from wtforms import StringField, PasswordField, BooleanField, SelectMultipleField, SelectField
-from wtforms.validators import InputRequired, Email, Length, ValidationError, EqualTo
+from wtforms import StringField, PasswordField, BooleanField, SelectField
+from wtforms.validators import InputRequired, Email, Length, ValidationError
 from wtforms_sqlalchemy.fields import QuerySelectField
-from models import User
-from wtforms.fields.html5 import DateField, TimeField
+from application.models import User, Course
 
 
 class LoginForm(FlaskForm):
@@ -13,11 +12,16 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember me')
 
 
+def course_query(level):
+    return Course.query.filter_by(level=level)
+
+
 class RegisterForm(FlaskForm):
     username = StringField('Username:', validators=[InputRequired(), Length(min=4, max=15)])
+    level = SelectField('Level: ', validators=[InputRequired()], choices = [('Triennale','trie'), ('Magistrale','magister')])
+    #'''course = QuerySelectField('Course: ', query_factory=course_query(level))'''
     email = StringField('Email: ', validators=[InputRequired(), Email(), Length(max=50)])
     password = PasswordField('Password: ', validators=[InputRequired(), Length(min=8, max=80)])
-    confirm_password = PasswordField('Confirm Password', validators=[InputRequired(), EqualTo('password')])
 
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
@@ -48,12 +52,9 @@ class UpdateAccountForm(FlaskForm):
              raise ValidationError('Email already taken')
 
 
-class NewPostForm(FlaskForm):
-    #title = StringField('Subject: ', validators=[InputRequired()])
-    dt = DateField('Date', format='%Y-%m-%d')
-    begin = TimeField('Start', format='%h-%m')
-    end = TimeField('End', format='%h-%m')
-    subject = StringField('Subject', validators= [InputRequired()])
-    sub = SelectField(u'Subject', choices=[('1', 'Course 1'), ('2', 'Course 2'), ('3', 'Course 3')])
+def level_query():
+    return Course.query.distinct(Course.level).order_by(Course.level)
 
-    #'''room_opts = QuerySelectField(query_factory= , allow_blank=True )'''
+
+'''class NewPostForm(FlaskForm):'''
+
