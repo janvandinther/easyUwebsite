@@ -11,16 +11,41 @@ Sign Up
     <link rel="stylesheet" type="text/css" href="/static/signin.css">
 </head>
 <div class="container">
-  <form class="form-signin" method="POST">
+  <form class="form-signin" method="POST" action="">
       <h1>Sign Up </h1>
       <h2 class="form-signin-heading"></h2>
       {{ form.hidden_tag() }}
-      {{ wtf.form_field(form.username)}}
-      {{ wtf.form_field(form.email) }}
+      <div>
+          {{ form.username.label(class="form-control-lable") }}
+           {% if form.username.errors %}
+           {{ form.username(class="form-control form-control-lg is-invalid") }}
+           <div class="invalid-feedback">
+               {% for error in form.username.errors %}
+                   <span>{{ error }}</span>
+               {% endfor %}
+           </div>
+        {% else %}
+           {{ form.username(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+         {{ form.email.label(class="form-control-lable") }}
+           {% if form.email.errors %}
+               {{ form.email(class="form-control form-control-lg is-invalid") }}
+               <div class="invalid-feedback">
+                   {% for error in form.email.errors %}
+                       <span>{{ error }}</span>
+                   {% endfor %}
+               </div>
+           {% else %}
+               {{ form.email(class="form-control form-control-lg") }}
+           {% endif %}
+       <div>
+
+       </div>
       {{ wtf.form_field(form.password) }}
       {{ wtf.form_field(form.confirm_password) }}
-    <button
-      class="btn1 btn-lg btn-primary btn-block" type="submit" >Sign Up
+            <button
+      class="btn btn-lg btn-primary btn-block" type="submit">Sign Up
     </button>
   </form>
 </div>

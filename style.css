@@ -2,7 +2,7 @@
     margin-bottom: 0;
     border-radius: 0;
     background-color: #24305E;
-    font-size:1.2vw;
+    font-size:1.5vw;
     border:0;
 }
 
@@ -24,6 +24,7 @@
     text-align: center;
     color:  #F76C6c
 }
+
 
 .background_photo h1{
     font-size: 10vw;
@@ -47,7 +48,7 @@
     color: #f8e9a1 ;
     background: #24305E;
     transition-duration: 1s;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 16px 40px;
     fontsize: 14px;
 }
@@ -60,3 +61,6 @@
 description {
     font-size: 1.2vw;
 }
+
+
+
